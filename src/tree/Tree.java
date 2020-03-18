@@ -25,17 +25,21 @@ public class Tree {
         return current;
     }
 
-    public void print() {
-        System.out.print("Дерево:");
-        print(root);
-        System.out.println();
+    public void printElements() {
+        if (root == null) {
+            System.out.println("Дерево пусто");
+        } else {
+            System.out.print("Элементы дерева:");
+            printElements(root);
+            System.out.println();
+        }
     }
 
-    private void print(Node currentNode) {
+    private void printElements(Node currentNode) {
         if (currentNode != null) {
-            print(currentNode.left);
+            printElements(currentNode.left);
             System.out.print(" " + currentNode.key);
-            print(currentNode.right);
+            printElements(currentNode.right);
         }
     }
 
@@ -54,5 +58,21 @@ public class Tree {
                 searchLessElements(currentNode.right, key, result);
             }
         }
+    }
+
+    private void printTreeView(Node node, int depth) {
+        if (node != null) {
+            printTreeView(node.right, depth + 1);
+
+            for (int i = 0; i < depth; i++) {
+                System.out.print("   ");
+            }
+            System.out.println(node.key);
+            printTreeView(node.left, depth + 1);
+        }
+    }
+
+    public void printTreeView() {
+        printTreeView(root, 0);
     }
 }
