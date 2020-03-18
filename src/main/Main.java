@@ -12,13 +12,11 @@ public class Main {
 
         while (workFlag) {
             printMenu(tree);
-            Scanner in = new Scanner(System.in);
-            int option = in.nextInt();
+            int option = new Scanner(System.in).nextInt();
 
             switch (option) {
                 case 1:
-                    System.out.println("Введите значение");
-                    tree.add(in.nextInt());
+                    addElement(tree);
                     break;
                 case 2:
                     printLessElements(tree);
@@ -32,10 +30,14 @@ public class Main {
         }
     }
 
-    private static void printLessElements(Tree tree) {
-        Scanner in = new Scanner(System.in);
+    private static void addElement(Tree tree) {
         System.out.println("Введите значение");
-        int elemToCompare = in.nextInt();
+        tree.add(new Scanner(System.in).nextInt());
+    }
+
+    private static void printLessElements(Tree tree) {
+        System.out.println("Введите значение");
+        int elemToCompare = new Scanner(System.in).nextInt();
         List<Integer> result = tree.searchLessElements(elemToCompare);
         System.out.printf("Количество элементов меньше %d: %d ", elemToCompare, result.size());
         System.out.println(result);
