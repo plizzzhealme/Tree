@@ -14,7 +14,6 @@ public class Tree {
                 result.add(currentNode.key);
                 searchLessElements(currentNode.right, key, result);
             }
-
         }
     }
 
