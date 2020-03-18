@@ -60,6 +60,10 @@ public class Tree {
         }
     }
 
+    public void printTreeView() {
+        printTreeView(root, 0);
+    }
+
     private void printTreeView(Node node, int depth) {
         if (node != null) {
             printTreeView(node.right, depth + 1);
@@ -70,9 +74,5 @@ public class Tree {
             System.out.println(node.key);
             printTreeView(node.left, depth + 1);
         }
-    }
-
-    public void printTreeView() {
-        printTreeView(root, 0);
     }
 }
