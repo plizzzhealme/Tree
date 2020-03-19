@@ -6,6 +6,10 @@ import java.util.List;
 public class Tree {
     private Node root;
 
+    public Node getRoot() {
+        return root;
+    }
+
     public void add(int key) {
         root = add(root, key);
     }
@@ -25,24 +29,6 @@ public class Tree {
         return current;
     }
 
-    public void printElements() {
-        if (root == null) {
-            System.out.println("Дерево пусто");
-        } else {
-            System.out.print("Элементы дерева:");
-            printElements(root);
-            System.out.println();
-        }
-    }
-
-    private void printElements(Node currentNode) {
-        if (currentNode != null) {
-            printElements(currentNode.left);
-            System.out.print(" " + currentNode.key);
-            printElements(currentNode.right);
-        }
-    }
-
     public List<Integer> searchLessElements(int key) {
         List<Integer> result = new ArrayList<>();
         searchLessElements(root, key, result);
@@ -60,19 +46,21 @@ public class Tree {
         }
     }
 
-    public void printTreeView() {
+   /* public void printTreeView() {
         printTreeView(root, 0);
-    }
+    }*/
 
-    private void printTreeView(Node node, int depth) {
+    /*private void printTreeView(Node node, int depth) {
         if (node != null) {
             printTreeView(node.right, depth + 1);
 
             for (int i = 0; i < depth; i++) {
                 System.out.print("   ");
             }
+
             System.out.println(node.key);
+
             printTreeView(node.left, depth + 1);
         }
-    }
+    }*/
 }

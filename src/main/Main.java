@@ -1,6 +1,7 @@
 package main;
 
 import tree.Tree;
+import tree.TreePrinter;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,10 +12,11 @@ public class Main {
         Tree tree = new Tree();
         int[] testSet = {8, 4, 12, 2, 6, 10, 14, 1, 3, 5, 7, 9, 11, 13, 15};
         Arrays.stream(testSet).forEach(tree::add);
+        TreePrinter tp = new TreePrinter(tree.getRoot());
         boolean workFlag = true;
 
         while (workFlag) {
-            printMenu(tree);
+            printMenu();
             int option = new Scanner(System.in).nextInt();
 
             switch (option) {
@@ -25,7 +27,7 @@ public class Main {
                     printLessElements(tree);
                     break;
                 case 3:
-                    tree.printTreeView();
+                    tp.print(System.out);
                     break;
                 case 4:
                     workFlag = false;
@@ -49,8 +51,8 @@ public class Main {
         System.out.println(result);
     }
 
-    private static void printMenu(Tree tree) {
-        tree.printElements();
+    private static void printMenu() {
+        System.out.println("Меню:");
         System.out.println("1. Добавить элемент");
         System.out.println("2. Вывести элементы меньше указанного");
         System.out.println("3. Вывести в виде дерева");
